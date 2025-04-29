@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "server": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "express-promise-router": "^4.1.1",
+    "express-rate-limit": "^7.5.0",
+    "express-slow-down": "^2.0.3",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.0"
+  }
+}
