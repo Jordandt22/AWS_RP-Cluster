@@ -7,18 +7,15 @@ const morgan = require("morgan");
 const http = require("http");
 const rateLimiter = require("express-rate-limit");
 const slowDown = require("express-slow-down");
-// const connect = require("./models/db");
 const app = express();
 
 // Middleware
-const { NODE_ENV } = process.env;
+const { NODE_ENV, WEB_URL } = process.env;
 const notProduction = NODE_ENV !== "production";
 app.use(helmet());
 app.use(
   cors({
-    origin: notProduction
-      ? "http://localhost:3000"
-      : "https://spartanfinance.netlify.app",
+    origin: notProduction ? "http://localhost:3000" : WEB_URL,
   })
 );
 app.use(express.json());
@@ -46,9 +43,6 @@ const speedLimiter = slowDown({
 app.use(speedLimiter);
 app.use(limiter);
 
-// Mongoose Connection
-// connect();
-
 // Landing Page Route
 app.get("/", (req, res) => {
   res.send("Raspberry PI Cluster API is Up and Running !");
@@ -56,11 +50,17 @@ app.get("/", (req, res) => {
 
 // ---- API Routes ----
 
-// Users
-// app.use(
-//   `/v${process.env.API_VERSION}/api/users`,
-//   require("./routes/users/users.rt")
-// );
+// Routes for Jobs
+app.use(
+  `/v${process.env.API_VERSION}/api/jobs`,
+  require("./routes/jobs.routes")
+);
+
+// Routes for Logging and Monitoring
+app.use(
+  `/v${process.env.API_VERSION}/api/logs`,
+  require("./routes/logs.routes")
+);
 
 // PORT and Sever
 const PORT = process.env.PORT || 8000;
