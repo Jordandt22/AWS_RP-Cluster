@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 // Contexts
 import { useUI } from "../../../context/UI/UI.context";
 import { useAPI } from "../../../context/API/API.context";
+import { useGlobal } from "../../../context/global/Global.context";
 
 const convertToGB = (bytes) => {
   const val = Number(bytes) / 1073741824;
@@ -13,9 +14,10 @@ const convertToGB = (bytes) => {
 function SystemMetrics() {
   const { curNode } = useUI();
   const { getSystemMetrics } = useAPI();
+  const { setSystemMetrics } = useGlobal();
 
   // Queries
-  const { data, error, isLoading, isError } = useQuery({
+  const { data, error, isLoading, isError, refetch } = useQuery({
     queryKey: [`SYSTEM_METRICS_${curNode.name}`],
     queryFn: () => getSystemMetrics(curNode),
     refetchInterval: 30 * 1000, // 30s
@@ -33,6 +35,10 @@ function SystemMetrics() {
   const sortedMetricsArr = data.data.metrics.sort(
     (a, b) => new Date(b.data.timestamp) - new Date(a.data.timestamp)
   );
+  if (sortedMetricsArr.length <= 0) {
+    return <div>Loading...</div>;
+  }
+
   const {
     cpuLoad1m,
     memoryFree,
@@ -40,7 +46,7 @@ function SystemMetrics() {
     memoryUsagePercent,
     memoryUsed,
     timestamp,
-  } = sortedMetricsArr[0].data;
+  } = sortedMetricsArr[0]?.data;
   const metrics = [
     {
       label: "CPU Load",
@@ -71,6 +77,7 @@ function SystemMetrics() {
     hour: "2-digit",
     minute: "2-digit",
   };
+  setSystemMetrics({ refetch });
   return (
     <>
       <h2>

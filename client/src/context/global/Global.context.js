@@ -22,8 +22,21 @@ export const GlobalContextProvider = (props) => {
       loading: { ...curState.loading, show: false, message: "Loading..." },
     }));
 
+  const [systemMetrics, setSystemMetrics] = useState({ refetch: null });
+  const [consoleLogs, setConsoleLogs] = useState({ refetch: null });
+
   return (
-    <GlobalContext.Provider value={{ state, showLoading, closeLoading }}>
+    <GlobalContext.Provider
+      value={{
+        state,
+        showLoading,
+        closeLoading,
+        systemMetrics,
+        setSystemMetrics,
+        consoleLogs,
+        setConsoleLogs,
+      }}
+    >
       {props.children}
     </GlobalContext.Provider>
   );

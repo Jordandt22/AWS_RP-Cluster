@@ -1,5 +1,4 @@
 import React from "react";
-import { useQueryClient } from "@tanstack/react-query";
 import { useFormik } from "formik";
 
 // MISC
@@ -9,15 +8,16 @@ import { JobSchema } from "../../../validation/Schemas";
 // Contexts
 import { useAPI } from "../../../context/API/API.context";
 import { useUI } from "../../../context/UI/UI.context";
+import { useGlobal } from "../../../context/global/Global.context";
 
 const checkError = (formik, name) => {
   return formik.errors[name] && formik.touched[name];
 };
 
 function JobForm() {
-  const queryClient = useQueryClient();
   const { submitJob } = useAPI();
   const { curNode } = useUI();
+  const { systemMetrics } = useGlobal();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -35,12 +35,7 @@ function JobForm() {
         },
         (res) => {
           resetForm();
-          queryClient.invalidateQueries({
-            queryKey: [`SYSTEM_METRICS_${curNode.name}`],
-          });
-          queryClient.invalidateQueries({
-            queryKey: [`CONSOLE_LOGS_${curNode.name}`],
-          });
+          systemMetrics.refetch();
         }
       );
     },

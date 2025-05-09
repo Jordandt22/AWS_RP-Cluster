@@ -43,7 +43,7 @@ function ConsoleLogs() {
           };
 
           return (
-            <p>
+            <p key={message}>
               [{date.toLocaleString("en-US", options)}] {message.split("] ")[1]}
             </p>
           );
