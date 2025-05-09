@@ -16,7 +16,7 @@ module.exports = {
 
     const logGroupName = "/rpc/metrics";
     const logStreamName = `rpc-${nodeName.toLowerCase()}`;
-    const metrics = await getLogs(logGroupName, logStreamName, 10, 60);
+    const metrics = await getLogs(logGroupName, logStreamName, 10, 10);
 
     res.status(200).json({
       nodeName,
@@ -34,7 +34,7 @@ module.exports = {
 
     const logGroupName = "/rpc/logs";
     const logStreamName = `rpc-${nodeName.toLowerCase()}`;
-    const logs = await getLogs(logGroupName, logStreamName, 30, 120);
+    const logs = await getLogs(logGroupName, logStreamName, 30, 30);
 
     res
       .status(200)
@@ -50,7 +50,7 @@ module.exports = {
 
     const logGroupName = "/rpc/console_logs";
     const logStreamName = `rpc-${nodeName.toLowerCase()}`;
-    const logs = await getLogs(logGroupName, logStreamName, 30, 120);
+    const logs = await getLogs(logGroupName, logStreamName, 30, 30);
 
     res
       .status(200)
