@@ -28,7 +28,7 @@ if (notProduction) {
 
 // Rate & Speed Limiter Info
 const timeLimit = 1000 * 60 * 15;
-const maxReq = 75;
+const maxReq = 200;
 const limiter = rateLimiter({
   windowMs: timeLimit,
   max: maxReq,

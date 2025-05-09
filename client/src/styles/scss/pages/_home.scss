@@ -2,6 +2,10 @@
 
 .home-container {
   padding: $spacer-md $spacer-lg;
+
+  .main-content {
+    align-items: flex-start;
+  }
 }
 
 .job-form-container {
@@ -93,5 +97,103 @@
     margin-top: $spacer-small;
     border-radius: 5px;
     font-weight: bold;
+  }
+}
+
+// RP Node Info
+.node-info-container {
+  width: 100%;
+  background: white;
+  margin-left: $spacer-md;
+  border-radius: 15px;
+  padding: $spacer;
+
+  h1 {
+    color: $primary;
+    font-size: $main-fs;
+    margin-bottom: $spacer;
+  }
+
+  h2 {
+    font-size: $main-fs * 0.85;
+    margin-bottom: $spacer;
+
+    span {
+      color: grey;
+      font-weight: 400;
+      font-size: $main-fs * 0.65;
+    }
+  }
+}
+
+.node-info {
+  &__nodes {
+    margin-bottom: $spacer-md;
+  }
+
+  &__node {
+    margin-right: $spacer-small;
+    outline: none;
+    border: none;
+    background: rgba(#e6e7f6, 0.5);
+    padding: $spacer-small * 0.5 $spacer-small;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: capitalize;
+    transition: all 200ms ease-out;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(0.9);
+    }
+  }
+
+  &__active {
+    background: $primary;
+    color: white;
+  }
+}
+
+.system-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer-small * 1.5;
+  margin-bottom: $spacer-md;
+
+  &__box {
+    background: rgba(#e6e7f6, 0.5);
+    padding: $spacer-small;
+    border-radius: 15px;
+
+    h3 {
+      margin-bottom: $spacer-small * 0.5;
+    }
+  }
+}
+
+.console-logs {
+  background: black;
+  padding: $spacer-small * 1.5;
+  border-radius: 5px;
+  margin-bottom: $spacer-md;
+
+  p {
+    color: lime;
+    margin-bottom: $spacer-small * 0.65;
+  }
+}
+
+.system-logs {
+  background: #eee;
+  padding: $spacer-small * 1.5;
+  border-radius: 5px;
+  margin-bottom: $spacer-md;
+
+  p {
+    margin-bottom: $spacer-small * 0.65;
+    background: rgba(#e6e7f6, 0.5);
+    padding: $spacer-small * 0.5;
+    border-radius: 5px;
+    font-weight: 500;
   }
 }

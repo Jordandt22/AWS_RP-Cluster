@@ -224,6 +224,9 @@ html {
 .home-container {
   padding: 4rem 8rem;
 }
+.home-container .main-content {
+  align-items: flex-start;
+}
 
 .job-form-container {
   background: white;
@@ -303,6 +306,91 @@ html {
   margin-top: 1rem;
   border-radius: 5px;
   font-weight: bold;
+}
+
+.node-info-container {
+  width: 100%;
+  background: white;
+  margin-left: 4rem;
+  border-radius: 15px;
+  padding: 2rem;
+}
+.node-info-container h1 {
+  color: #ff4b3e;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+.node-info-container h2 {
+  font-size: 1.275rem;
+  margin-bottom: 2rem;
+}
+.node-info-container h2 span {
+  color: grey;
+  font-weight: 400;
+  font-size: 0.975rem;
+}
+
+.node-info__nodes {
+  margin-bottom: 4rem;
+}
+.node-info__node {
+  margin-right: 1rem;
+  outline: none;
+  border: none;
+  background: rgba(230, 231, 246, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+  transition: all 200ms ease-out;
+}
+.node-info__node:hover {
+  cursor: pointer;
+  transform: scale(0.9);
+}
+.node-info__active {
+  background: #ff4b3e;
+  color: white;
+}
+
+.system-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+.system-metrics__box {
+  background: rgba(230, 231, 246, 0.5);
+  padding: 1rem;
+  border-radius: 15px;
+}
+.system-metrics__box h3 {
+  margin-bottom: 0.5rem;
+}
+
+.console-logs {
+  background: black;
+  padding: 1.5rem;
+  border-radius: 5px;
+  margin-bottom: 4rem;
+}
+.console-logs p {
+  color: lime;
+  margin-bottom: 0.65rem;
+}
+
+.system-logs {
+  background: #eee;
+  padding: 1.5rem;
+  border-radius: 5px;
+  margin-bottom: 4rem;
+}
+.system-logs p {
+  margin-bottom: 0.65rem;
+  background: rgba(230, 231, 246, 0.5);
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-weight: 500;
 }
 
 body {

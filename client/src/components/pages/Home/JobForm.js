@@ -1,21 +1,23 @@
 import React from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useFormik } from "formik";
 
 // MISC
 import { cities } from "../../../misc/cities";
+import { JobSchema } from "../../../validation/Schemas";
 
 // Contexts
 import { useAPI } from "../../../context/API/API.context";
-
-// Components
-import { useFormik } from "formik";
-import { JobSchema } from "../../../validation/Schemas";
+import { useUI } from "../../../context/UI/UI.context";
 
 const checkError = (formik, name) => {
   return formik.errors[name] && formik.touched[name];
 };
 
 function JobForm() {
+  const queryClient = useQueryClient();
   const { submitJob } = useAPI();
+  const { curNode } = useUI();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -32,9 +34,13 @@ function JobForm() {
           data: { city },
         },
         (res) => {
-          const { job } = res.data;
-          console.log(job);
           resetForm();
+          queryClient.invalidateQueries({
+            queryKey: [`SYSTEM_METRICS_${curNode.name}`],
+          });
+          queryClient.invalidateQueries({
+            queryKey: [`CONSOLE_LOGS_${curNode.name}`],
+          });
         }
       );
     },
