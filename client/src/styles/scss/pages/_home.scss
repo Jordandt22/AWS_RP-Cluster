@@ -1,0 +1,97 @@
+// Home Page Styles
+
+.home-container {
+  padding: $spacer-md $spacer-lg;
+}
+
+.job-form-container {
+  background: white;
+  border-radius: 15px;
+  padding: $spacer;
+}
+
+.job-form {
+  &__title {
+    color: $primary;
+    font-size: $main-fs;
+    margin-bottom: $spacer;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $spacer;
+
+    label {
+      font-weight: 500;
+      margin-bottom: $spacer-small * 0.65;
+    }
+
+    input {
+      border: none;
+      outline: none;
+      background: rgba(#e6e7f6, 0.5);
+      padding: $spacer-small * 0.75 $spacer-small;
+      border-radius: 5px;
+    }
+
+    textarea {
+      border: none;
+      outline: none;
+      background: rgba(#e6e7f6, 0.5);
+      padding: $spacer-small * 0.75 $spacer-small;
+      border-radius: 5px;
+      resize: none;
+    }
+
+    select {
+      border: none;
+      outline: none;
+      background: rgba(#e6e7f6, 0.5);
+      padding: $spacer-small * 0.75 $spacer-small;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+  }
+
+  &__submit {
+    outline: none;
+    border: none;
+    background: $primary;
+    color: white;
+    padding: $spacer-small * 0.5 $spacer * 1.5;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-right: $spacer-small;
+    transition: all 200ms ease-out;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.75;
+    }
+  }
+
+  &__reset {
+    outline: none;
+    border: none;
+    background: transparent;
+    color: #009dff;
+    font-weight: bold;
+    transition: all 200ms ease-out;
+
+    &:hover {
+      cursor: pointer;
+      color: #006db1;
+    }
+  }
+
+  &__error {
+    background: #ff9a9a;
+    color: #ff3a3a;
+    padding: $spacer-small * 0.35 $spacer-small * 0.5;
+    font-size: $main-fs * 0.5;
+    margin-top: $spacer-small;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+}

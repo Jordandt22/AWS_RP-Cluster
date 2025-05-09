@@ -1,0 +1,400 @@
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+/* My Code */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+/* Variables */
+/* Colors */
+/* Font */
+/* Spacers */
+.between-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.around-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.center-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-container {
+  padding: 4rem 8rem;
+}
+
+.job-form-container {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+}
+
+.job-form__title {
+  color: #ff4b3e;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+.job-form__input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+.job-form__input label {
+  font-weight: 500;
+  margin-bottom: 0.65rem;
+}
+.job-form__input input {
+  border: none;
+  outline: none;
+  background: rgba(230, 231, 246, 0.5);
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+}
+.job-form__input textarea {
+  border: none;
+  outline: none;
+  background: rgba(230, 231, 246, 0.5);
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  resize: none;
+}
+.job-form__input select {
+  border: none;
+  outline: none;
+  background: rgba(230, 231, 246, 0.5);
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.job-form__submit {
+  outline: none;
+  border: none;
+  background: #ff4b3e;
+  color: white;
+  padding: 0.5rem 3rem;
+  border-radius: 25px;
+  font-weight: bold;
+  margin-right: 1rem;
+  transition: all 200ms ease-out;
+}
+.job-form__submit:hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
+.job-form__reset {
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #009dff;
+  font-weight: bold;
+  transition: all 200ms ease-out;
+}
+.job-form__reset:hover {
+  cursor: pointer;
+  color: #006db1;
+}
+.job-form__error {
+  background: #ff9a9a;
+  color: #ff3a3a;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+body {
+  overflow-x: hidden;
+  background: #858799;
+  font-family: "Poppins", sans-serif;
+}
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+}
+.loading-container p {
+  color: white;
+  font-weight: 500;
+  margin-top: 2rem;
+  font-size: 1.275rem;
+}
+
+.loader {
+  transform: rotateZ(45deg);
+  perspective: 1000px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: #fff;
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  transform: rotateX(70deg);
+  animation: 1s spin linear infinite;
+}
+
+.loader:after {
+  color: #ff4b3e;
+  transform: rotateY(70deg);
+  animation-delay: 0.4s;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+@keyframes rotateccw {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+@keyframes spin {
+  0%, 100% {
+    box-shadow: 0.2em 0px 0 0px currentcolor;
+  }
+  12% {
+    box-shadow: 0.2em 0.2em 0 0 currentcolor;
+  }
+  25% {
+    box-shadow: 0 0.2em 0 0px currentcolor;
+  }
+  37% {
+    box-shadow: -0.2em 0.2em 0 0 currentcolor;
+  }
+  50% {
+    box-shadow: -0.2em 0 0 0 currentcolor;
+  }
+  62% {
+    box-shadow: -0.2em -0.2em 0 0 currentcolor;
+  }
+  75% {
+    box-shadow: 0px -0.2em 0 0 currentcolor;
+  }
+  87% {
+    box-shadow: 0.2em -0.2em 0 0 currentcolor;
+  }
+}/*# sourceMappingURL=main.css.map */
