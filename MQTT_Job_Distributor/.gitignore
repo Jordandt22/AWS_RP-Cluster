@@ -1,0 +1,5 @@
+.env
+
+/node_modules
+
+/src/shared/helpers/connect_device_package
