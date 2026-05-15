@@ -16,6 +16,11 @@ const {
   sendConsoleLogs,
 } = require("../shared/logging/rpLogger");
 const { log } = require("../shared/helpers/consoleLogWrapper");
+const {
+  iotEndpoint,
+  clientIdWorker,
+  certBasenameWorker,
+} = require("../shared/config/awsEnv");
 
 const JOBS_FOLDER = "/mnt/shared/code/MQTT_Job_Distributor/src/shared/jobs/";
 const workerNodeName = os.hostname();
@@ -23,13 +28,15 @@ const workerNodeName = os.hostname();
 // Certificate File Path
 const absoluteFilePath = "/home/pi/certs/";
 const certificateFilePath =
-  absoluteFilePath + "connect_device_package/rpw-" + workerNodeName;
+  absoluteFilePath +
+  "connect_device_package/" +
+  certBasenameWorker(workerNodeName);
 const device = awsIot.device({
   keyPath: certificateFilePath + ".private.key",
   certPath: certificateFilePath + ".cert.pem",
   caPath: absoluteFilePath + "connect_device_package/AmazonRootCA1.pem",
-  clientId: "rpw-" + workerNodeName,
-  host: "a3ajycnqmw7di7-ats.iot.us-west-1.amazonaws.com",
+  clientId: clientIdWorker(workerNodeName),
+  host: iotEndpoint(),
 });
 
 device.on("connect", () => {

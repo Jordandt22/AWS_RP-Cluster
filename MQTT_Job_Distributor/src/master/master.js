@@ -18,17 +18,22 @@ const {
   sendConsoleLogs,
 } = require("../shared/logging/rpLogger");
 const { log } = require("../shared/helpers/consoleLogWrapper");
+const {
+  iotEndpoint,
+  clientIdMaster,
+  certBasenameMaster,
+} = require("../shared/config/awsEnv");
 
 // Certificate File Path
 const absoluteFilePath = "/home/pi/certs/";
 const certificateFilePath =
-  absoluteFilePath + "connect_device_package/rp-master-node";
+  absoluteFilePath + "connect_device_package/" + certBasenameMaster();
 const device = awsIot.device({
   keyPath: certificateFilePath + ".private.key",
   certPath: certificateFilePath + ".cert.pem",
   caPath: absoluteFilePath + "connect_device_package/AmazonRootCA1.pem",
-  clientId: "rp-master-node",
-  host: "a3ajycnqmw7di7-ats.iot.us-west-1.amazonaws.com",
+  clientId: clientIdMaster(),
+  host: iotEndpoint(),
 });
 
 // Current Worker Nodes that can be used for submitting a job

@@ -3,3 +3,7 @@
 /node_modules
 
 /src/shared/helpers/connect_device_package
+
+/src/shared/outputs
+
+/src/shared/logging/logs

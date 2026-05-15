@@ -1,6 +1,10 @@
-require("dotenv").config();
 const awsIot = require("aws-iot-device-sdk");
 const { CLUSTER_RESULTS } = require("../topics");
+const {
+  iotEndpoint,
+  clientIdScript,
+  certBasenameScript,
+} = require("../config/awsEnv");
 
 module.exports = {
   connectScriptMessenger: (data) => {
@@ -8,13 +12,13 @@ module.exports = {
     const absoluteFilePath =
       "/mnt/shared/code/MQTT_Job_Distributor/src/shared/helpers/";
     const certificateFilePath =
-      absoluteFilePath + "connect_device_package/rpw-script-helper";
+      absoluteFilePath + "connect_device_package/" + certBasenameScript();
     const device = awsIot.device({
       keyPath: certificateFilePath + ".private.key",
       certPath: certificateFilePath + ".cert.pem",
       caPath: absoluteFilePath + "connect_device_package/AmazonRootCA1.pem",
-      clientId: "rpw-script-helper",
-      host: "a3ajycnqmw7di7-ats.iot.us-west-1.amazonaws.com",
+      clientId: clientIdScript(),
+      host: iotEndpoint(),
     });
 
     device.on("connect", () => {

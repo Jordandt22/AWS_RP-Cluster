@@ -1,5 +1,0 @@
-Chart generated and saved locally.
-File uploaded successfully.
-Local file deleted.
-Script Messenger connected to AWS IoT Core for reporting!
-Job Completed by node02

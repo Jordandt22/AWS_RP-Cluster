@@ -5,6 +5,7 @@ const axios = require("axios");
 const QuickChart = require("quickchart-js");
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const { connectScriptMessenger } = require("../helpers/scriptMessenger");
+const { s3ChartsBucket, awsRegion } = require("../config/awsEnv");
 const args = process.argv.slice(2);
 const { API_AWS_ACCESS_KEY_ID, API_AWS_SECRET_ACCESS_KEY, WEATHER_API_KEY } =
   process.env;
@@ -20,8 +21,9 @@ const {
 } = JSONData;
 
 // AWS credentials (make sure your credentials are set up correctly, either via IAM role or environment variables)
+const chartsBucket = s3ChartsBucket();
 const s3Client = new S3Client({
-  region: "us-west-1",
+  region: awsRegion(),
   credentials: {
     accessKeyId: API_AWS_ACCESS_KEY_ID,
     secretAccessKey: API_AWS_SECRET_ACCESS_KEY,
@@ -71,7 +73,7 @@ async function fetchWeatherData() {
     const fileContent = fs.readFileSync(path);
     await s3Client.send(
       new PutObjectCommand({
-        Bucket: "rpc-weather",
+        Bucket: chartsBucket,
         Key: `charts/chart_${jobID}.png`,
         Body: fileContent,
         ContentType: "image/png",
@@ -92,7 +94,7 @@ async function fetchWeatherData() {
       jobData: JSONData.jobData,
       result: {
         data,
-        s3: { bucket: "rpc-weather", key: `charts/chart_${jobID}.png` },
+        s3: { bucket: chartsBucket, key: `charts/chart_${jobID}.png` },
       },
     });
   } catch (err) {

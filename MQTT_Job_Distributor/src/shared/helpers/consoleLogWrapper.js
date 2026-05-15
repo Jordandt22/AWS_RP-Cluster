@@ -1,9 +1,13 @@
-require("dotenv").config();
 const awsIot = require("aws-iot-device-sdk");
 const fs = require("fs");
 const os = require("os");
 const path = require("path");
 const { CLUSTER_CONSOLE } = require("../topics");
+const {
+  iotEndpoint,
+  clientIdLogger,
+  certBasenameLogger,
+} = require("../config/awsEnv");
 const nodeName = os.hostname();
 
 // Certificate File Path
@@ -18,14 +22,15 @@ const absoluteFilePath = path.join(
 );
 const certificateFilePath = path.join(
   absoluteFilePath,
-  "/connect_device_package/rpw-script-helper"
+  "/connect_device_package",
+  certBasenameLogger()
 );
 const device = awsIot.device({
   keyPath: certificateFilePath + ".private.key",
   certPath: certificateFilePath + ".cert.pem",
   caPath: absoluteFilePath + "/connect_device_package/AmazonRootCA1.pem",
-  clientId: "rpc-logger",
-  host: "a3ajycnqmw7di7-ats.iot.us-west-1.amazonaws.com",
+  clientId: clientIdLogger(),
+  host: iotEndpoint(),
 });
 
 module.exports = {
